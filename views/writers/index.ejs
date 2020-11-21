@@ -1,0 +1,27 @@
+<h2 class="page-header">Search Writer</h2>
+
+<form action="/writers" method="GET">
+<label>Search</label> <br>
+<div class="form-row">
+    <div class="form-item">
+        <input type="text" name="name" value="<% if (locals.options != null) { %>  <% searchOptions.name %> <% } %>">
+    </div>
+</div>
+
+<div class="form-row form-row-end">
+<button class="cus-btn cus-btn-1" type="submit">search</button>
+</div>
+
+</form>
+
+
+<% writers.forEach(writer => { %>
+    <div class="writer-row">
+        <div class="writer-name"><%= writer.name %></div>
+            <div class="btn-row">
+                <a class="cus-btn cus-btn-1" href="/writers/<%= writer.id %> ">View</a>
+                <a class="cus-btn cus-btn-1" href="/writers/<%= writer.id %>/edit ">Edit</a>
+                <%- include('../partials/deleteform' ,{ url : `/writers/${writer.id}`}) %> 
+        </div>
+    </div>
+<% }) %>

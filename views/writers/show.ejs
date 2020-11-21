@@ -1,0 +1,11 @@
+<h2 class="page-header"><%= writer.name %></h2>
+
+<div class="btn-row">
+<a class="cus-btn cus-btn-1" href="/writers/<%= writer.id %>/edit">Edit</a>
+<%- include('../partials/deleteform' ,{ url : `/writer/${writer.id}`}) %> 
+</div>
+
+<% if (booksByWriter.length > 0) { %>
+    <h2>Books by writer</h2>
+    <%- include('../partials/bookGrid', { books: booksByWriter }) %>
+<% } %>

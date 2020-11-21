@@ -1,0 +1,10 @@
+<h2 class="page-header">Edit Writer</h2>
+
+<form action="/writers/<%= writer.id %>?_method=PUT" method="POST">
+    <%- include('_form_fields')  %> 
+    <div class="btn-row form-row form-row-end">
+        <a class="cus-btn cus-btn-2" href="/writers/<%= writer.id %>">Cancel</a>
+        <button class="cus-btn cus-btn-1" type="submit">Update</button>
+    </div>
+
+</form>

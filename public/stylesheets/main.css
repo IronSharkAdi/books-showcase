@@ -1,0 +1,12 @@
+@import 'shared/variable.css' ;
+
+:root{
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 30px;
+    color: var(--color-text-light);
+}
+
+body{
+    background-image: linear-gradient(to right,  var( --color-backgroud-dark), var( --color-backgroud-light));
+}
+

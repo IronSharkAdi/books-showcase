@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+  <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
+  <script defer src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+  <script defer src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
+  <script defer src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+  <script defer src="https://unpkg.com/filepond/dist/filepond.js"></script>
+  <script defer src="/javascripts/fileUpload.js"></script>
+    <link rel="shortcut icon" href="https://i.pinimg.com/originals/2c/fc/93/2cfc93d7665f5d7728782700e50596e3.png" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <title>Books</title>
+</head>
+<style>
+  .container1{
+    max-width: 1200px; margin: auto; margin-bottom: 3rem ;
+  }
+  .container2{
+    margin: 0  2rem ;
+  }
+  .header-title{
+    color: rgb(184, 231, 255) ;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  *, *::before , *::after{
+    box-sizing: border-box;
+  }
+  .header-nav{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 3rem ;
+  }
+  .header-nav ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+  .header-nav li a {
+      text-decoration: none;
+      padding: 1rem;
+      color: rgb(184, 231, 255)  ;
+      font-weight: 300 ;
+  }
+  .header-nav li{
+    list-style: none;
+  }
+  .header-nav li a:hover , .header-title:hover{
+    color: white  ;
+  }
+  .page-header{
+    font-size: 2rem;
+    font-weight: 500;
+  }
+  .cus-btn{
+    border: 1px solid black;
+    border-radius: .5rem;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+  }
+  .cus-btn-1{
+    color: rgb(0, 68, 102) ;
+    background-color: rgb(168, 226, 255) ;
+  }
+  .cus-btn-2{
+    color: black;
+    background-color: hsl(20, 100%, 86%) ;
+  }
+  .cus-btn-1:hover{
+    color: hsl(200, 100%, 10%) ;
+    background-color: hsl(200, 100%, 73%) ;
+  }
+  .cus-btn-2:hover{
+    color: black;
+    background-color: hsl(20, 100%, 73%) ;
+  }
+  .btn-row{
+    display: flex;
+    align-items: flex-start;
+  }
+  .btn-row > *{
+    margin-left: 1rem ;
+  }
+  .btn-row > *:first-child{
+    margin-left: 0 ;
+  }
+
+  /* -----------------------------form------------------------------------------------ */
+  .form-row{
+    display: flex;
+    margin-bottom: 0.5rem;
+
+  }
+  .form-item{
+    display: flex;
+    flex-direction: column;
+    margin-left: 2rem;
+    flex-grow: 1 ;
+    flex-basis: 0;
+  }
+  .form-item:first-child{
+    margin-left: 0;
+  }
+  .form-item-no-grow{
+    flex-grow: 0;
+  }
+  .form-item > label{
+    font-size: 1.2rem; 
+    margin-left: 0.25rem ;
+    margin-bottom: 0.25rem; 
+  }
+   .form-item input , .form-item select , .form-item textarea{
+     height: 1rem;
+     padding: 0.25rem .5rem;
+     border-radius: 0.25rem ;
+     border:1px solid hsl(200, 100%, 50%) ;
+     background-color: hsl(200, 100%, 31%) ;
+     color:rgb(184, 231, 255) ;
+     outline: none;
+     font-size: 0.8rem;
+     font-weight: normal;
+
+   }
+   .form-item textarea{
+     height: 100%;
+     resize: none;
+   }
+   .filepond--root{
+    font-family: 'Noto Sans JP', sans-serif;
+    margin-bottom: 0;
+   }
+   .filepond--panel-root{
+    border:1px solid hsl(200, 100%, 50%) ;
+    background-color: hsl(200, 100%, 31%) ;
+   }
+   .filepond--drop-label{
+    color:rgb(184, 231, 255) ;
+    font-size: inherit;
+   }
+   .form-row-end{
+     justify-content: flex-end;
+   }
+   .writer-name{
+    font-size: 1rem;
+   }
+   .writer-row{
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+   }
+   :root {
+  --book-cover-width: 200px;
+  --book-cover-width-large: 325px;
+  --book-cover-aspect-ratio: 0.75;
+}
+
+.book-cover {
+  width: var(--book-cover-width);
+  height: calc(var(--book-cover-width) / var(--book-cover-aspect-ratio));
+}
+
+.book-cover-large {
+  --book-cover-width: var(--book-cover-width-large);
+}
+
+.book-grid {
+  display: grid;
+  justify-content: center;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(auto-fill, var(--book-cover-width));
+}
+
+.book-grid-large {
+  grid-template-columns: repeat(auto-fill, var(--book-cover-width-large));
+}
+
+.book-details {
+  display: flex;
+}
+
+.book-details-label {
+  font-size: 1.2rem;
+  font-weight: 500;
+  align-self: flex-start;
+}
+
+.book-details-grid {
+  display: grid;
+  align-content: flex-start;
+  align-items: center;
+  grid-gap: 1rem;
+  grid-template-columns: auto auto;
+}
+
+.book-details-btn-grid {
+  display: grid;
+  justify-items: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  grid-template-areas:
+    "edit delete"
+    "writer writer";
+  grid-gap: .5rem;
+  margin-top: .5rem;
+}
+
+.book-details-writer-btn {
+  grid-area: writer;
+  justify-self: stretch;
+}
+
+
+
+
+
+
+</style>
+<body>
+    
+      <div class="container1">
+        <%- include('../partials/header.ejs') %> 
+
+          <div class="container2">
+            <%- include('../partials/errmsg.ejs')  %> 
+            <%- body %>
+          </div> 
+      
+      </div>
+    
+</body>
+</html>
